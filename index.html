@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d101a">
+  <meta name="description" content="Портфолио веб-проектов: образовательные платформы и цифровые продукты.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Портфолио веб-проектов">
+  <meta property="og:description" content="Кейсы, демонстрации и реализованные веб-проекты.">
+  <meta property="og:url" content="https://nikolasmagith.github.io/">
+  <title>Портфолио — веб-проекты</title>
+  <style>
+    :root{color-scheme:dark;--bg:#0d101a;--panel:#161b2a;--line:#30384d;--ink:#f4f5fb;--muted:#a8b0c4;--accent:#b8ff74;--purple:#9c8dfb}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+    body:before{content:"";position:absolute;inset:0 0 auto;height:750px;pointer-events:none;background:radial-gradient(ellipse at 82% 16%,rgba(116,93,219,.19),transparent 46%),radial-gradient(ellipse at 7% 36%,rgba(118,255,144,.055),transparent 40%)}
+    a{color:inherit;text-decoration:none}
+    a:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:6px}
+    .wrap{width:min(1120px,calc(100% - 48px));margin:auto;position:relative}
+    .header{display:flex;justify-content:space-between;align-items:center;padding:29px 0;border-bottom:1px solid rgba(255,255,255,.09)}
+    .brand{font-size:15px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;gap:10px}
+    .brandmark{width:29px;height:29px;border-radius:9px;display:grid;place-items:center;background:var(--accent);color:#0d101a;font-weight:900}
+    nav{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--muted)}
+    nav a:hover,.small-link:hover{color:var(--accent)}
+    .hero{padding:108px 0 102px;max-width:850px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:var(--accent)}
+    .eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(46px,7.1vw,92px);letter-spacing:-.065em;line-height:1.03;font-weight:750;margin:24px 0}
+    .gradient{background:linear-gradient(100deg,#b8ff74,#a6e4cc 52%,#aaa1fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{max-width:610px;font-size:clamp(17px,2.1vw,21px);color:var(--muted);margin:0 0 32px}
+    .button{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:14px 20px;border:1px solid transparent;border-radius:12px;font-weight:750;font-size:14px;transition:transform .15s,background .15s}
+    .button:hover{transform:translateY(-2px)}
+    .primary{color:#101611;background:var(--accent)}
+    .primary:hover{background:#d0ffa6}
+    .ghost{border-color:var(--line);background:rgba(255,255,255,.025)}
+    .ghost:hover{border-color:#8a96ac}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:26px}
+    .section-head h2{font-size:clamp(27px,4vw,43px);line-height:1.15;letter-spacing:-.045em;margin:12px 0 0}
+    .overline{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:800}
+    .count{color:var(--muted);font-size:14px}
+    .project{overflow:hidden;border:1px solid var(--line);border-radius:24px;background:linear-gradient(120deg,#171d2b,#111722)}
+    .project-visual{min-height:385px;display:flex;align-items:center;justify-content:center;position:relative;padding:52px 20px;background:radial-gradient(ellipse at 50% 60%,#37465a,#1b233c 56%,#171c32 100%)}
+    .project-visual:before{content:"";position:absolute;inset:0;opacity:.18;background-image:linear-gradient(#ffffff16 1px,transparent 1px),linear-gradient(90deg,#ffffff16 1px,transparent 1px);background-size:42px 42px}
+    .preview{position:relative;width:min(760px,100%);padding:18px;background:#f4f5fb;border:6px solid #252e47;border-radius:17px;box-shadow:0 25px 65px #080d205e;transform:rotate(-2deg)}
+    .browser{height:23px;display:flex;align-items:flex-start;gap:5px;border-bottom:1px solid #dce0eb;margin-bottom:17px}
+    .dot{height:7px;width:7px;border-radius:50%;background:#bec5d4}
+    .browser-address{margin-left:15px;font-size:9px;color:#8892a5}
+    .preview-body{display:grid;grid-template-columns:1.5fr 1fr;gap:12px}
+    .preview-copy{padding:16px}
+    .preview-kicker{font-size:10px;color:#6e4fd6;text-transform:uppercase;letter-spacing:.11em;font-weight:800}
+    .preview-title{font-size:clamp(20px,4.1vw,40px);font-weight:850;letter-spacing:-.045em;color:#182039;line-height:1.1;margin:8px 0}
+    .preview-sub{font-size:12px;color:#566179}
+    .preview-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:19px}
+    .preview-tags span{background:#e5e7f7;color:#59507c;padding:6px 9px;border-radius:7px;font-weight:700;font-size:10px}
+    .preview-graphic{border-radius:12px;min-height:195px;display:grid;place-items:center;background:linear-gradient(135deg,#9b8ae9,#5a6ec6)}
+    .cap{width:106px;height:106px;border:8px solid #ffffff50;border-radius:25px;display:grid;place-items:center;color:white;font-size:60px;font-weight:800;transform:rotate(9deg)}
+    .visual-note{position:absolute;bottom:15px;right:18px;font-size:11px;color:#c5cee4;letter-spacing:.02em}
+    .project-info{display:grid;grid-template-columns:1.35fr 1fr;gap:25px;align-items:center;padding:35px}
+    .project-info h3{font-size:clamp(27px,3vw,35px);letter-spacing:-.045em;margin:5px 0 12px}
+    .project-info p{color:var(--muted);max-width:580px;margin-bottom:0}
+    .project-actions{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+    .project-meta{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
+    .pill{font-size:12px;border:1px solid #3f4a61;border-radius:99px;padding:5px 10px;color:#c9cfe0}
+    .muted-note{color:var(--muted);font-size:12px;text-align:right;max-width:260px}
+    .about{padding:95px 0 100px;display:grid;grid-template-columns:.7fr 1fr;gap:45px;border-bottom:1px solid var(--line)}
+    .about h2{font-size:clamp(31px,4vw,46px);line-height:1.15;letter-spacing:-.045em;margin:12px 0}
+    .about p{font-size:18px;color:var(--muted);max-width:620px}
+    footer{padding:32px 0 40px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+    .small-link{text-decoration:underline;text-underline-offset:4px}
+    @media(max-width:730px){.wrap{width:min(100% - 32px,1120px)}.hero{padding:72px 0 77px}nav{gap:15px}.project-visual{min-height:265px;padding:35px 13px}.preview{transform:none;padding:10px}.preview-body{gap:5px}.preview-copy{padding:5px}.preview-sub{font-size:10px}.preview-tags{margin-top:10px}.preview-tags span{padding:4px 6px}.preview-graphic{min-height:155px}.cap{width:70px;height:70px;font-size:40px;border-width:5px}.project-info{padding:24px;display:block}.project-actions{align-items:flex-start;margin-top:22px}.muted-note{text-align:left}.about{grid-template-columns:1fr;padding:70px 0;gap:12px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <a href="#top" class="brand" aria-label="На главную"><span class="brandmark">N</span> WEB / PORTFOLIO</a>
+      <nav aria-label="Навигация"><a href="#projects">Проекты</a><a href="#about">О портфолио</a></nav>
+    </header>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <span class="eyebrow">Портфолио веб-проектов</span>
+        <h1 id="hero-title">Идеи, которые<br><span class="gradient">работают в вебе.</span></h1>
+        <p>Реализованные цифровые проекты: от образовательных платформ до удобных онлайн-сервисов. Здесь можно познакомиться с задачами и посмотреть действующие сайты.</p>
+        <div class="cta"><a class="button primary" href="#projects">Смотреть проекты <span aria-hidden="true">↗</span></a><a class="button ghost" href="https://github.com/NikolasMaGitH" target="_blank" rel="noopener noreferrer">Профиль GitHub <span aria-hidden="true">↗</span></a></div>
+      </section>
+      <section id="projects" aria-labelledby="projects-title">
+        <div class="section-head"><div><div class="overline">Избранные работы</div><h2 id="projects-title">Проекты</h2></div><div class="count">01 / первый кейс</div></div>
+        <article class="project" aria-labelledby="project-title">
+          <div class="project-visual" aria-label="Стилизованная иллюстрация образовательного проекта, не скриншот настоящего сайта">
+            <div class="preview" aria-hidden="true">
+              <div class="browser"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="browser-address">vseznaykak.ru</span></div>
+              <div class="preview-body"><div class="preview-copy"><div class="preview-kicker">EdTech / онлайн-образование</div><div class="preview-title">ВсёЗнайКак</div><div class="preview-sub">Образовательная платформа для школьников и студентов</div><div class="preview-tags"><span>Школа</span><span>СПО</span><span>Вузы</span></div></div><div class="preview-graphic"><div class="cap">✦</div></div></div>
+            </div>
+            <span class="visual-note">Концептуальная иллюстрация • не скриншот сайта</span>
+          </div>
+          <div class="project-info">
+            <div><div class="project-meta"><span class="pill">Образование</span><span class="pill">Онлайн-платформа</span><span class="pill">Веб-сервис</span></div><h3 id="project-title">ВсёЗнайКак</h3><p>Платформа онлайн-школы для репетиторских и консультационных услуг школьникам, студентам СПО и вузов. Проект объединяет образовательные направления в цифровом формате.</p></div>
+            <div class="project-actions"><a class="button primary" href="https://vseznaykak.ru/" target="_blank" rel="noopener noreferrer">Открыть сайт <span aria-hidden="true">↗</span></a><div class="muted-note">Скриншоты, видеообзор и автономная демоверсия будут добавлены после подготовки материалов.</div></div>
+          </div>
+        </article>
+      </section>
+      <section id="about" class="about" aria-labelledby="about-title">
+        <div><div class="overline">О портфолио</div><h2 id="about-title">От идеи<br>к продукту</h2></div>
+        <p>В этом портфолио собраны веб-проекты с акцентом на понятную структуру, удобство и реальные сценарии использования. Новые кейсы будут появляться по мере подготовки демонстрационных материалов.</p>
+      </section>
+    </main>
+    <footer><span>© <span id="year">2026</span> Портфолио веб-проектов</span><a class="small-link" href="https://github.com/NikolasMaGitH" target="_blank" rel="noopener noreferrer">GitHub ↗</a></footer>
+  </div>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>
