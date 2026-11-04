@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e9f1ea">
+<meta name="description" content="Безопасная интерактивная демонстрация интерфейса образовательной платформы «Знай, как».">
+<title>Знай, как — интерактивная демоверсия</title>
+<style>
+:root{--forest:#173c35;--green:#2d6553;--paper:#f8f7f0;--soft:#eaf2ec;--yellow:#f7df82;--ink:#15342e;--muted:#56706a;--line:#cadbd2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #167c70;outline-offset:3px}
+.skip{position:absolute;top:-60px;left:12px;background:#fff;padding:8px;z-index:100}.skip:focus{top:8px}
+.demo-bar{padding:9px 16px;background:#163d36;color:#d8f8e4;font-size:12px;text-align:center;font-weight:650;letter-spacing:.015em}
+.demo-bar a{text-decoration:underline;text-underline-offset:3px}
+.container{max-width:1170px;margin:auto;padding-left:26px;padding-right:26px}
+.nav-area{background:#e8f2e9;border-bottom:1px solid #d9e8de}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:85px}
+.logo{display:flex;gap:12px;align-items:center;font-size:21px;font-weight:850;white-space:nowrap;letter-spacing:-.035em}
+.symbol{display:grid;place-items:center;height:43px;width:43px;border:2px solid var(--green);border-radius:50%;color:var(--green);font-size:25px;font-weight:900}
+.nav-links{display:flex;align-items:center;gap:25px;font-weight:650;color:#38534b;font-size:14px}
+.nav-links>a:hover{color:#16815d}
+.login{padding:12px 16px;border-radius:13px;background:var(--forest);color:white;font-weight:700;white-space:nowrap;font-size:13px;border:none}
+.mobile-menu{display:none}
+.hero{background:radial-gradient(circle at 78% 12%,#f9f7e9 0%,transparent 50%),linear-gradient(120deg,#faf8ed 10%,#e9e9d8 100%);overflow:hidden}
+.hero-inner{min-height:650px;display:grid;grid-template-columns:52% 48%;align-items:center}
+.hero-copy{position:relative;z-index:2;padding:72px 0}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#42735a;font-weight:800;margin:0 0 16px}
+h1{font-size:clamp(40px,4.2vw,65px);line-height:1.09;letter-spacing:-.052em;margin:0 0 24px;font-weight:850}
+.lead{font-size:20px;max-width:525px;color:#405e56;margin:0 0 31px}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:18px;padding:14px 26px;border-radius:14px;border:2px solid var(--forest);font-weight:800;min-height:56px;transition:transform .16s ease}
+.button:hover{transform:translateY(-2px)}
+.yellow{background:var(--yellow);box-shadow:5px 5px 0 #16463b2c}
+.outline{background:transparent;color:var(--forest)}
+.mock{position:relative;height:500px;display:flex;align-items:end;justify-content:center}
+.mock:before{content:"";position:absolute;width:540px;height:450px;top:0;left:9%;background:radial-gradient(circle,#e9dec8 15%,transparent 70%)}
+.plant{position:absolute;width:70px;height:280px;right:-5px;top:20px;background:repeating-radial-gradient(ellipse at 45% 23%,#507d49 0 12px,#7b996c 13px 22px,transparent 23px 42px);border-radius:50%;opacity:.5;filter:blur(2px)}
+.desk{position:absolute;bottom:12px;left:-80px;width:670px;height:65px;background:linear-gradient(90deg,#e2bd8f,#bb905b,#e2bd8f);transform:skewX(-9deg);border-radius:5px 5px 13px 13px;box-shadow:0 22px 36px #5548272d}
+.laptop{position:absolute;bottom:95px;right:-8px;width:min(440px,94%);height:275px;border-radius:17px;background:#292e2f;padding:13px;box-shadow:0 20px 25px #354b4147;transform:rotate(-2deg)}
+.screen{width:100%;height:100%;border-radius:6px;background:linear-gradient(160deg,#eef5eb,#bedcc8);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.big-logo{font-size:99px;line-height:1;color:#448979;font-weight:900}
+.screen span{font-size:16px;font-weight:800;letter-spacing:.04em;color:#367163}
+.books{position:absolute;bottom:91px;left:-18px;width:156px;height:115px}
+.books div{height:29px;margin:7px 0;border-radius:3px 12px 12px 3px;box-shadow:0 7px 6px #7a694d24;background:#fbecd2;border-left:11px solid #70927b;transform:rotate(-3deg)}
+.books div:nth-child(2){background:#f2e0a0;border-left-color:#b8a56e;width:145px;transform:rotate(4deg)}
+.books div:nth-child(3){border-left-color:#6c8a74;width:151px}
+.section{padding:90px 0}
+.section h2{font-size:clamp(30px,3.7vw,45px);letter-spacing:-.045em;line-height:1.2;margin:7px 0 18px}
+.section-lead{font-size:18px;color:var(--muted);max-width:700px;margin-bottom:35px}
+.kicker{font-size:12px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:#548a75}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.benefit{background:white;border:1px solid var(--line);border-radius:18px;padding:26px}
+.number{font-size:13px;color:#629b80;font-weight:800}
+.benefit h3{font-size:19px;margin:12px 0 8px;line-height:1.2}.benefit p{color:var(--muted);font-size:14px;margin:0}
+.programs{background:#e9f1eb}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0 22px}
+.filter{background:white;border:1px solid var(--line);color:var(--forest);padding:12px 20px;border-radius:12px;font-weight:700}
+.filter[aria-pressed="true"]{background:var(--forest);border-color:var(--forest);color:white}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{min-height:260px;padding:28px;background:#fff;border:1px solid #cadbd2;border-radius:19px;display:flex;flex-direction:column;gap:12px}
+.card[hidden]{display:none}
+.card-icon{display:grid;place-items:center;width:46px;height:46px;font-size:22px;background:#f4e8b6;border-radius:13px}
+.card h3{margin:2px 0;font-size:23px;letter-spacing:-.03em}.card p{margin:0;color:var(--muted);font-size:15px}
+.card button{margin-top:auto;background:none;border:0;color:#1a6454;padding:8px 0;text-align:left;font-weight:800}
+.about{display:grid;grid-template-columns:1fr 1.2fr;gap:75px;align-items:start}
+.about p{font-size:18px;color:var(--muted)}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:19px 5px}
+.faq summary{font-size:18px;font-weight:750;cursor:pointer}
+.faq details p{color:var(--muted);max-width:730px;margin:14px 0 0}
+.cta{background:var(--forest);color:#fff;padding:60px 0}
+.cta .container{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.cta h2{font-size:32px;margin:0 0 9px;letter-spacing:-.04em}
+.cta p{margin:0;color:#c4ddd2}
+.cta .button{color:var(--forest);white-space:nowrap;border-color:var(--yellow)}
+footer{padding:28px 0;color:var(--muted);font-size:13px}
+footer .container{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
+dialog{width:min(480px,calc(100% - 30px));padding:32px;border:1px solid #c4dbca;border-radius:21px;box-shadow:0 25px 100px #142d2969;color:var(--forest)}
+dialog::backdrop{background:#0b201bc2}
+dialog h2{margin:0 0 15px;font-size:29px}
+dialog p{color:#526860;line-height:1.55}
+.dialog-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px}
+.dialog-actions .button{padding:10px 15px;min-height:45px;font-size:14px}
+@media(max-width:850px){.nav-links{display:none}.mobile-menu{display:block;position:relative}.mobile-menu summary{list-style:none;background:#fff;border-radius:11px;padding:10px 15px;cursor:pointer;font-weight:700}.mobile-menu summary::-webkit-details-marker{display:none}.mobile-links{position:absolute;right:0;top:42px;width:210px;border:1px solid var(--line);padding:15px;background:white;box-shadow:0 14px 30px #233b3624;border-radius:13px;display:grid;gap:12px;z-index:10}.hero-inner{grid-template-columns:1fr}.hero-copy{padding:70px 0 15px}.mock{height:365px;max-width:650px;width:100%}.laptop{right:10px;width:400px}.desk{left:0}.books{left:7%}.benefits{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr;gap:0}}
+@media(max-width:550px){.container{padding-left:19px;padding-right:19px}.nav{min-height:70px}.logo{font-size:19px}.symbol{height:35px;width:35px;font-size:21px}.hero-copy{padding:55px 0 12px}.hero-inner{min-height:0}h1{font-size:43px}.lead{font-size:17px}.mock{height:280px}.laptop{width:290px;height:190px;bottom:70px;right:0}.desk{height:41px;bottom:4px;width:100%}.books{bottom:63px;left:0;width:90px}.books div{height:22px}.big-logo{font-size:60px}.plant{height:175px}.section{padding:65px 0}.benefits,.cards{grid-template-columns:1fr}.benefit{padding:22px}.card{min-height:210px}.cta .container{align-items:start;flex-direction:column}.cta h2{font-size:27px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержанию</a>
+<div class="demo-bar">ИНТЕРАКТИВНОЕ ДЕМО · Без регистрации, оплаты и передачи данных · <a href="https://vseznaykak.ru/" target="_blank" rel="noopener noreferrer">Действующий сайт ↗</a></div>
+<header class="nav-area">
+<div class="container nav">
+  <a class="logo" href="#home" aria-label="На главную"><span class="symbol" aria-hidden="true">✳</span>Знай, как</a>
+  <nav class="nav-links" aria-label="Разделы демонстрации">
+    <a href="#home">Главная</a><a href="#programs">Программы</a><a href="#about">О платформе</a><a href="#faq">Вопросы</a><button type="button" class="login" data-open-demo>Вход | Регистрация</button>
+  </nav>
+  <details class="mobile-menu"><summary>☰ Меню</summary><nav class="mobile-links" aria-label="Мобильная навигация"><a href="#home">Главная</a><a href="#programs">Программы</a><a href="#about">О платформе</a><a href="#faq">Вопросы</a><button class="login" type="button" data-open-demo>Вход | Регистрация</button></nav></details>
+</div>
+</header>
+<main id="main">
+<section class="hero" id="home" aria-labelledby="hero-title"><div class="container hero-inner">
+  <div class="hero-copy"><div class="eyebrow">Онлайн-платформа для обучения</div><h1 id="hero-title">Разобраться в сложном — проще, чем кажется</h1><p class="lead">Консультации для школьников и студентов СПО и вузов.</p><a class="button yellow" href="#programs">Программы <span aria-hidden="true">→</span></a></div>
+  <div class="mock" aria-hidden="true"><div class="plant"></div><div class="desk"></div><div class="books"><div></div><div></div><div></div></div><div class="laptop"><div class="screen"><div class="big-logo">✳</div><span>ЗНАЙ, КАК</span></div></div></div>
+</div></section>
+<section class="section" id="features"><div class="container"><span class="kicker">Формат консультаций</span><h2>Как устроена работа</h2><p class="section-lead">Разбор задач, консультации и помощь с материалами. Демоверсия показывает структуру проекта, не обрабатывая настоящие заявки.</p>
+<div class="benefits">
+  <div class="benefit"><div class="number">01</div><h3>Экономия времени</h3><p>Подбор удобного времени для консультаций.</p></div>
+  <div class="benefit"><div class="number">02</div><h3>Онлайн-доступ</h3><p>Обучение и материалы из любой точки мира.</p></div>
+  <div class="benefit"><div class="number">03</div><h3>Материалы</h3><p>Разборы и дополнительные учебные ресурсы.</p></div>
+  <div class="benefit"><div class="number">04</div><h3>Понятные условия</h3><p>Заранее известные формат и длительность.</p></div>
+</div></div></section>
+<section class="section programs" id="programs" aria-labelledby="programs-title"><div class="container"><span class="kicker">Каталог</span><h2 id="programs-title">Направления обучения</h2><p class="section-lead">Переключайте категории и открывайте карточки, чтобы увидеть работу интерфейса. Цены и доступность услуг уточняйте на действующем сайте.</p>
+<div class="filters" role="group" aria-label="Фильтр программ"><button class="filter" type="button" aria-pressed="true" data-filter="all">Все направления</button><button class="filter" type="button" aria-pressed="false" data-filter="school">Школьникам</button><button class="filter" type="button" aria-pressed="false" data-filter="college">СПО</button><button class="filter" type="button" aria-pressed="false" data-filter="university">Вузам</button></div>
+<div class="cards" id="program-cards">
+  <article class="card" data-category="school"><span class="card-icon" aria-hidden="true">📘</span><h3>Школьные предметы</h3><p>Объяснение тем, практика и консультации по учебной программе.</p><button type="button" data-open-demo>Подробнее ↗</button></article>
+  <article class="card" data-category="school"><span class="card-icon" aria-hidden="true">🎓</span><h3>Подготовка к экзаменам</h3><p>Разбор типовых задач и системная работа над темами.</p><button type="button" data-open-demo>Подробнее ↗</button></article>
+  <article class="card" data-category="college"><span class="card-icon" aria-hidden="true">🧰</span><h3>Программы СПО</h3><p>Помощь в освоении дисциплин и практических тем.</p><button type="button" data-open-demo>Подробнее ↗</button></article>
+  <article class="card" data-category="university"><span class="card-icon" aria-hidden="true">📐</span><h3>Университетские курсы</h3><p>Консультации по сложным темам и учебным материалам.</p><button type="button" data-open-demo>Подробнее ↗</button></article>
+  <article class="card" data-category="college university"><span class="card-icon" aria-hidden="true">💬</span><h3>Индивидуальные консультации</h3><p>Разбор конкретного вопроса со специалистом.</p><button type="button" data-open-demo>Подробнее ↗</button></article>
+  <article class="card" data-category="school college university"><span class="card-icon" aria-hidden="true">🗂️</span><h3>Работа с материалами</h3><p>Помощь с организацией изучения темы и обратная связь.</p><button type="button" data-open-demo>Подробнее ↗</button></article>
+</div></div></section>
+<section class="section" id="about"><div class="container about"><div><span class="kicker">О проекте</span><h2>Образовательная платформа «Знай, как»</h2></div><div><p>Сервис онлайн-школы, предоставляющей репетиторские и консультационные услуги ученикам школ, студентам среднего профессионального и высшего образования.</p><p>В демонстрации сохранены структура, адаптивность и основные сценарии взаимодействия, но отключены серверные операции и любые реальные пользовательские данные.</p><a class="button outline" target="_blank" rel="noopener noreferrer" href="https://vseznaykak.ru/">Перейти на настоящий сайт ↗</a></div></div></section>
+<section class="section programs" id="faq"><div class="container"><span class="kicker">Помощь</span><h2>Вопросы и ответы</h2><div class="faq">
+<details><summary>Можно ли записаться на консультацию через эту демоверсию?</summary><p>Нет. Здесь демонстрируется интерфейс без обработки заявок. Для записи перейдите на действующий сайт.</p></details>
+<details><summary>Можно ли проверить сайт на телефоне?</summary><p>Да. Размеры блоков, навигация и карточки адаптируются к ширине экрана.</p></details>
+<details><summary>Какие функции в этой версии работают?</summary><p>Навигация, фильтры программ, раскрывающиеся ответы и информационные окна. Авторизация, серверная база данных, платежи и личные кабинеты здесь не запускаются.</p></details>
+</div></div></section>
+<section class="cta"><div class="container"><div><h2>Хотите посмотреть полный продукт?</h2><p>Откройте действующий сайт образовательной платформы.</p></div><a class="button yellow" href="https://vseznaykak.ru/" target="_blank" rel="noopener noreferrer">Открыть сайт ↗</a></div></section>
+</main>
+<footer><div class="container"><span>Знай, как · публичная интерактивная демонстрация для портфолио</span><a href="../">← Вернуться в портфолио</a></div></footer>
+<dialog id="demo-dialog" aria-labelledby="demo-dialog-title"><h2 id="demo-dialog-title">Режим демонстрации</h2><p>Вы открыли интерактивную копию основных элементов интерфейса. Регистрация, заявки и оплата здесь специально отключены, чтобы не затрагивать реальные данные.</p><div class="dialog-actions"><form method="dialog"><button class="button outline">Закрыть</button></form><a href="https://vseznaykak.ru/" class="button yellow" target="_blank" rel="noopener noreferrer">Действующий сайт ↗</a></div></dialog>
+<script>
+(function(){
+ var filters=document.querySelectorAll('[data-filter]'),cards=document.querySelectorAll('[data-category]'),dialog=document.getElementById('demo-dialog');
+ filters.forEach(function(button){button.addEventListener('click',function(){var f=button.dataset.filter;filters.forEach(function(b){b.setAttribute('aria-pressed',String(b===button))});cards.forEach(function(card){card.hidden=f!=='all'&&!card.dataset.category.split(' ').includes(f)})})});
+ document.querySelectorAll('[data-open-demo]').forEach(function(button){button.addEventListener('click',function(){if(dialog.showModal)dialog.showModal();else alert('Это демоверсия: регистрация и заявки здесь отключены.')})});
+ dialog.addEventListener('click',function(e){if(e.target===dialog)dialog.close()});
+ document.querySelectorAll('.mobile-links a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.mobile-menu').open=false})});
+})();
+</script>
+</body>
+</html>
