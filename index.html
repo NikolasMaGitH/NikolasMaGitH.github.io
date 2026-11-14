@@ -72,6 +72,17 @@
     footer{padding:32px 0 40px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
     .small-link{text-decoration:underline;text-underline-offset:4px}
     @media(max-width:730px){.wrap{width:min(100% - 32px,1120px)}.hero{padding:72px 0 77px}nav{gap:15px}.project-visual{min-height:265px;padding:35px 13px}.preview{transform:none;padding:10px}.preview-body{gap:5px}.preview-copy{padding:5px}.preview-sub{font-size:10px}.preview-tags{margin-top:10px}.preview-tags span{padding:4px 6px}.preview-graphic{min-height:155px}.cap{width:70px;height:70px;font-size:40px;border-width:5px}.project-info{padding:24px;display:block}.project-actions{align-items:flex-start;margin-top:22px}.muted-note{text-align:left}.about{grid-template-columns:1fr;padding:70px 0;gap:12px}}
+
+    /* Aladin Auto: screenshot-only portfolio case; private source is not exposed */
+    .aladin-visual{min-height:425px;padding:35px 42px;overflow:hidden;background:radial-gradient(ellipse at 78% 25%,#24517b 0%,#131e34 43%,#09101a 100%)}
+    .aladin-monitor{width:min(830px,92%);height:355px;overflow:hidden;position:relative;z-index:1;background:#070c16;border:7px solid #29344b;border-radius:16px;box-shadow:0 30px 70px #010611a8;transform:rotate(-1.1deg)}
+    .aladin-monitor img{display:block;width:100%;height:auto}
+    .aladin-mobile{position:absolute;z-index:2;width:145px;height:277px;bottom:-23px;right:7%;overflow:hidden;border:7px solid #313a52;border-radius:24px;background:#070c16;box-shadow:0 20px 40px #020610a9;transform:rotate(5deg)}
+    .aladin-mobile img{display:block;width:100%;height:auto}
+    .aladin-note{position:absolute;top:17px;left:22px;z-index:3;display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid #5573a6;border-radius:99px;background:#081426cf;color:#dfeeff;font-size:11px;font-weight:800;letter-spacing:.06em}
+    .aladin-note:before{content:"";height:7px;width:7px;background:#61a8ff;border-radius:50%;box-shadow:0 0 12px #61a8ff}
+    @media(max-width:730px){.aladin-visual{min-height:274px;padding:35px 12px}.aladin-monitor{width:92%;height:205px;border-width:4px;border-radius:10px;transform:none}.aladin-mobile{right:3%;bottom:-8px;width:80px;height:164px;border-width:4px;border-radius:13px}.aladin-note{top:9px;left:12px;font-size:9px;padding:4px 8px}}
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
   </style>
 </head>
@@ -89,7 +100,7 @@
         <div class="cta"><a class="button primary" href="#projects">Смотреть проекты <span aria-hidden="true">↗</span></a><a class="button ghost" href="https://github.com/NikolasMaGitH" target="_blank" rel="noopener noreferrer">Профиль GitHub <span aria-hidden="true">↗</span></a></div>
       </section>
       <section id="projects" aria-labelledby="projects-title">
-        <div class="section-head"><div><div class="overline">Избранные работы</div><h2 id="projects-title">Проекты</h2></div><div class="count">02 / интерактивные демоверсии</div></div>
+        <div class="section-head"><div><div class="overline">Избранные работы</div><h2 id="projects-title">Проекты</h2></div><div class="count">03 / избранных проекта</div></div>
         <article class="project" aria-labelledby="project-title">
           <div class="project-visual" aria-label="Стилизованная иллюстрация образовательного проекта, не скриншот настоящего сайта">
             <div class="preview" aria-hidden="true">
@@ -115,6 +126,26 @@
           <div class="project-info">
             <div><div class="project-meta"><span class="pill">Массажная студия</span><span class="pill">Каталог услуг</span><span class="pill">Онлайн-запись</span></div><h3 id="contour-title">КонтурРук Кабаева</h3><p>Сайт студии массажа с разными методиками, каталогом процедур и сценарием онлайн-записи. В архиве проекта есть серверная реализация на Django; для публичного просмотра подготовлена отдельная безопасная интерактивная демонстрация интерфейса.</p></div>
             <div class="project-actions"><a class="button primary" href="konturruk/">Интерактивное демо <span aria-hidden="true">↗</span></a><div class="muted-note">Демонстрационный режим: заявки, персональные данные и оплата отключены.</div></div>
+          </div>
+        </article>
+
+        <article class="project" aria-labelledby="aladin-title" style="margin-top:28px">
+          <div class="project-visual aladin-visual">
+            <div class="aladin-note">AUTO SERVICE / КОНЦЕПТ 2.0</div>
+            <div class="aladin-monitor"><img src="media/aladin-auto-desktop.webp" alt="Скриншот десктопной версии Aladin Auto 2.0: тёмный гоночный дизайн и фото мастерской" width="1181" loading="lazy" decoding="async"></div>
+            <div class="aladin-mobile"><img src="media/aladin-auto-mobile.webp" alt="Скриншот мобильной версии Aladin Auto 2.0" loading="lazy" decoding="async"></div>
+          </div>
+          <div class="project-info">
+            <div>
+              <div class="project-meta"><span class="pill">Автосервис</span><span class="pill">HTML / CSS / JavaScript</span><span class="pill">Адаптивный дизайн</span></div>
+              <h3 id="aladin-title">Aladin Auto 2.0</h3>
+              <p>Дизайн-концепт сайта автосервиса: выразительная гоночная стилистика, выбор услуги по симптомам, каталог с поиском и фильтрами, реальные фотографии мастерской и понятный путь к обращению. Полная рабочая версия остаётся локальной, а исходники — в закрытом GitHub-репозитории.</p>
+            </div>
+            <div class="project-actions">
+              <a class="button primary" href="media/aladin-auto-desktop.webp" target="_blank" rel="noopener noreferrer">Смотреть дизайн <span aria-hidden="true">↗</span></a>
+              <a class="button ghost" href="media/aladin-auto-mobile.webp" target="_blank" rel="noopener noreferrer">Мобильная версия <span aria-hidden="true">↗</span></a>
+              <div class="muted-note">Показаны только скриншоты. Интерактивный сайт и исходный код публично не размещены; это не официальный сайт автосервиса.</div>
+            </div>
           </div>
         </article>
       </section>
