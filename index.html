@@ -83,6 +83,13 @@
     .aladin-note:before{content:"";height:7px;width:7px;background:#61a8ff;border-radius:50%;box-shadow:0 0 12px #61a8ff}
     @media(max-width:730px){.aladin-visual{min-height:274px;padding:35px 12px}.aladin-monitor{width:92%;height:205px;border-width:4px;border-radius:10px;transform:none}.aladin-mobile{right:3%;bottom:-8px;width:80px;height:164px;border-width:4px;border-radius:13px}.aladin-note{top:9px;left:12px;font-size:9px;padding:4px 8px}}
 
+
+    /* MarkRise — интерактивное демо туристического сайта */
+    .markrise-visual{min-height:415px;padding:28px;background:radial-gradient(ellipse at 75% 30%,#79577b 0%,#39304a 44%,#1d2336 100%)}
+    .markrise-shot{position:relative;display:block;width:min(880px,100%);max-height:440px;aspect-ratio:1440/811;object-fit:cover;object-position:center;border:6px solid #2f273b;border-radius:17px;box-shadow:0 28px 64px #130e2188}
+    .markrise-flag{position:absolute;top:20px;left:24px;padding:7px 13px;border:1px solid #e4be77a0;border-radius:999px;background:#201525d9;color:#ffe2a5;font-weight:800;font-size:11px;letter-spacing:.08em}
+    @media(max-width:730px){.markrise-visual{padding:30px 12px;min-height:230px}.markrise-shot{border-width:4px;border-radius:11px}.markrise-flag{top:11px;left:13px;font-size:9px;padding:5px 8px}}
+
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}}
   </style>
 </head>
@@ -100,7 +107,7 @@
         <div class="cta"><a class="button primary" href="#projects">Смотреть проекты <span aria-hidden="true">↗</span></a><a class="button ghost" href="https://github.com/NikolasMaGitH" target="_blank" rel="noopener noreferrer">Профиль GitHub <span aria-hidden="true">↗</span></a></div>
       </section>
       <section id="projects" aria-labelledby="projects-title">
-        <div class="section-head"><div><div class="overline">Избранные работы</div><h2 id="projects-title">Проекты</h2></div><div class="count">03 / избранных проекта</div></div>
+        <div class="section-head"><div><div class="overline">Избранные работы</div><h2 id="projects-title">Проекты</h2></div><div class="count">04 / избранных проекта</div></div>
         <article class="project" aria-labelledby="project-title">
           <div class="project-visual" aria-label="Стилизованная иллюстрация образовательного проекта, не скриншот настоящего сайта">
             <div class="preview" aria-hidden="true">
@@ -145,6 +152,24 @@
               <a class="button primary" href="media/aladin-auto-desktop.webp" target="_blank" rel="noopener noreferrer">Смотреть дизайн <span aria-hidden="true">↗</span></a>
               <a class="button ghost" href="media/aladin-auto-mobile.webp" target="_blank" rel="noopener noreferrer">Мобильная версия <span aria-hidden="true">↗</span></a>
               <div class="muted-note">Показаны только скриншоты. Интерактивный сайт и исходный код публично не размещены; это не официальный сайт автосервиса.</div>
+            </div>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="markrise-title" style="margin-top:28px">
+          <div class="project-visual markrise-visual">
+            <span class="markrise-flag">TRAVEL EXPERIENCE / 3D PARALLAX</span>
+            <img class="markrise-shot" src="markrise/preview.webp" width="1440" height="811" loading="lazy" decoding="async" alt="MarkRise — путешественник на ковре-самолёте над пирамидами Гизы">
+          </div>
+          <div class="project-info">
+            <div>
+              <div class="project-meta"><span class="pill">Туризм</span><span class="pill">3D-параллакс</span><span class="pill">HTML / CSS / JavaScript</span></div>
+              <h3 id="markrise-title">MarkRise — семейные туры по свету</h3>
+              <p>Атмосферный лендинг путешествий: многослойная иллюстрация полёта над пирамидами, интерактивный параллакс по движению курсора, адаптивная вёрстка, подбор направлений и демонстрационная форма заявки.</p>
+            </div>
+            <div class="project-actions">
+              <a class="button primary" href="markrise/">Открыть 3D-демо <span aria-hidden="true">↗</span></a>
+              <a class="button ghost" href="https://github.com/NikolasMaGitH/NikolasMaGitH.github.io/tree/main/markrise" target="_blank" rel="noopener noreferrer">Код проекта <span aria-hidden="true">↗</span></a>
+              <div class="muted-note">Концепт туристического сайта. Заявки и бронирования — только в демонстрационном режиме.</div>
             </div>
           </div>
         </article>
