@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#15131d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="LocalMusic">
+  <meta name="description" content="Локальный MP3-плеер без рекламы и аккаунтов">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>LocalMusic — офлайн MP3</title>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">♫</span><div><div class="eyebrow">НА ТВОЁМ УСТРОЙСТВЕ</div><h1>LocalMusic</h1></div></div>
+      <span class="offline-pill" title="Сервис не использует удалённые музыкальные API">Локально</span>
+    </header>
+
+    <section class="page-intro"><h2>Моя музыка</h2><p>MP3 хранятся на этом устройстве. Без подписок и рекламы.</p></section>
+
+    <section class="library-section" aria-label="Библиотека">
+      <div class="library-heading"><h3 id="list-title">Все треки</h3><span id="song-count">0 треков</span></div>
+      <div class="filterbar" id="playlists-bar"><button class="chip selected" data-playlist="all" type="button">Все треки</button></div>
+      <div id="library-list" class="library-list" aria-live="polite"></div>
+    </section>
+
+    <section class="player" aria-label="Музыкальный плеер">
+      <div class="player-head">
+        <label class="select-wrap"><span class="sr-only">Режим проигрывания</span><select id="mode-select">
+          <option value="normal">Обычный порядок</option>
+          <option value="one">Повтор трека</option>
+          <option value="all">Повтор списка</option>
+          <option value="shuffle">Случайный порядок</option>
+          <option value="reverse">Обратный порядок</option>
+        </select></label>
+        <button id="add-btn" class="icon-button add-button" type="button" title="Добавить" aria-label="Добавить музыку или плейлист">+</button>
+      </div>
+      <div class="playing-title" id="now-title">Выбери MP3 в библиотеке</div>
+      <input id="progress" type="range" min="0" max="1000" value="0" aria-label="Позиция трека">
+      <div class="timestamps"><span id="time-now">0:00</span><span id="time-total">0:00</span></div>
+      <div class="transport">
+        <button id="prev-btn" class="control-button" type="button" aria-label="Предыдущий трек" title="Предыдущий трек">⏮</button>
+        <button id="play-btn" class="control-button play-button" type="button" aria-label="Воспроизвести" title="Воспроизвести">▶</button>
+        <button id="next-btn" class="control-button" type="button" aria-label="Следующий трек" title="Следующий трек">⏭</button>
+      </div>
+      <audio id="audio" preload="metadata"></audio>
+    </section>
+    <p class="bottom-note">Без серверов и рекламы · Храни резервные копии MP3 вне приложения.</p>
+  </main>
+
+  <input id="file-input" type="file" multiple accept=".mp3,audio/mpeg" hidden>
+  <dialog id="actions-dialog" class="modal"><div class="modal-card"><div class="modal-head"><h3>Добавить</h3><button class="dismiss" data-close="actions-dialog" aria-label="Закрыть" type="button">×</button></div><button id="import-option" class="modal-action" type="button">＋ Импортировать MP3</button><button id="new-playlist-option" class="modal-action" type="button">▤ Создать плейлист</button></div></dialog>
+  <dialog id="playlist-dialog" class="modal"><form id="playlist-form" class="modal-card"><div class="modal-head"><h3>Новый плейлист</h3><button class="dismiss" data-close="playlist-dialog" type="button" aria-label="Закрыть">×</button></div><label for="playlist-name">Название плейлиста</label><input id="playlist-name" type="text" required maxlength="60" placeholder="Например, Любимые песни"><div class="modal-buttons"><button class="secondary" type="button" data-close="playlist-dialog">Отмена</button><button class="primary" type="submit">Создать</button></div></form></dialog>
+  <dialog id="track-dialog" class="modal"><div class="modal-card"><div class="modal-head"><h3 id="track-actions-title">Песня</h3><button class="dismiss" data-close="track-dialog" aria-label="Закрыть" type="button">×</button></div><div id="track-options"></div></div></dialog>
+  <div role="status" id="toast" class="toast" aria-live="polite"></div>
+</body>
+</html>
