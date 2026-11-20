@@ -8,7 +8,5 @@ Portfolio of web development projects
 Учебная интерактивная платформа мониторинга событий и расследования инцидентов информационной безопасности. Локальный помощник на правилах; синтетические данные, без внешних API.
 
 - [Открыть сервис](https://nikolasmagith.github.io/securitylab/)
-- [Исходный код и описание](securitylab/)
-- [Назначение, преимущества и ограничения](securitylab/README.md)
 
 [Портфолио](https://nikolasmagith.github.io/)
